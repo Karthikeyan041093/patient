@@ -1,0 +1,29 @@
+server:  
+  port : 8090
+  servlet:
+    context-path: /patientdetails
+spring:
+  datasource:
+    username: root
+    url: jdbc:mysql://localhost:3306/testdb
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  cache:
+    type: redis
+    redis:
+      time-to-live: '600000'
+      cache-null-values: 'true'
+  redis:
+    port: '6379'
+ 
+  management:
+    endpoints:
+      web:
+        exposure:
+          include: "metrics"
